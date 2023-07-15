@@ -3,9 +3,13 @@ import { useState, useEffect } from "react"
 const Formulario = () => {
   
   const [nombre, setNombre] = useState("")
+  const [propietario, setPropietario] = useState("")
+  const [email, setEmail] = useState("")
+  const [fecha, setFecha] = useState("")
+  const [sintomas, setSintomas] = useState("")
   
     return (
-   <div className="md:w-1/2 lg:w-2/5">
+   <div className="md:w-1/2 lg:w-2/5 mx-5">
         <h2 className="text-stone-400 text-3xl text-centers">Seguimiento Pacientes</h2>
 
         <p className="text-lg mt-5 text-center mb-5">
@@ -14,31 +18,34 @@ const Formulario = () => {
         </p>
 
         <form className="bg-gray-400 shadow-lg rounded-lg py-10 px-5 mb-10">
+            
             <div className="mb-5">
                 <label htmlFor="mascota" className="block uppercase font-bold">
                         Nombre de la mascota
                 </label>
-                    <input 
-                        id="mascota"
-                        type="text" 
-                        className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md" 
-                        placeholder="Laika"
-                        value={nombre}
-                        onChange={(e) => setNombre(e.target.value) }
-                    />
-                
+                <input 
+                    id="mascota"
+                    type="text" 
+                    className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md" 
+                    placeholder="Laika"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value) }
+                />
+            
             </div>
 
             <div className="mb-5">
                 <label htmlFor="propietario" className="block uppercase font-bold">
                         Nombre del propietario
                 </label>
-                    <input 
-                        id="propietario"
-                        type="text" 
-                        className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md" 
-                        placeholder="John Doe"/>
-                
+                <input 
+                    id="propietario"
+                    type="text" 
+                    className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md" 
+                    placeholder="John Doe"
+                    value={propietario}
+                    onChange={(e) => setPropietario(e.target.value) }     
+                />
             </div>
 
             <div className="mb-5">
@@ -49,8 +56,10 @@ const Formulario = () => {
                         id="email"
                         type="email" 
                         className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md" 
-                        placeholder="johndoe@gmail.com"/>
-                
+                        placeholder="johndoe@gmail.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value) }   
+                    />             
             </div>
 
 
@@ -61,8 +70,10 @@ const Formulario = () => {
                     <input 
                         id="date"
                         type="date" 
-                        className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md"/>
-                
+                        className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md"
+                        value={fecha}
+                        onChange={(e) => setFecha(e.target.value) }         
+                    />       
             </div>
 
             <div className="mb-5">
@@ -72,8 +83,10 @@ const Formulario = () => {
                     <textarea 
                         id="sintomas"
                         type="date" 
-                        className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md" placeholder="Describe los sintomas aqui"/>
-                
+                        className="border-spacing-2 w-full p-2 mt-2 placeholder-red-500 rounded-md" placeholder="Describe los sintomas aqui"
+                        value={sintomas}
+                        onChange={(e) => setSintomas(e.target.value) }       
+                    />         
             </div>
 
             <input 
