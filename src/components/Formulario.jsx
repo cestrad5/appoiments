@@ -1,13 +1,62 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
+import Error from './Error'
 
-const Formulario = () => {
+const Formulario = ({pacientes, setPacientes}) => {
   
-  const [nombre, setNombre] = useState("")
-  const [propietario, setPropietario] = useState("")
-  const [email, setEmail] = useState("")
-  const [fecha, setFecha] = useState("")
-  const [sintomas, setSintomas] = useState("")
+  const [nombre, setNombre] = useState('')
+  const [propietario, setPropietario] = useState('')
+  const [email, setEmail] = useState('')
+  const [fecha, setFecha] = useState('')
+  const [sintomas, setSintomas] = useState('')
+  const [error, setError] = useState('false')
   
+const generarId = () => {
+
+    const random = Math.random().toString(36);
+    const fecha = Date.now().toString(36);
+
+    return random + fecha
+
+}
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //Validando el formulario
+    if([nombre, propietario, email, fecha, sintomas].includes('')) {
+        
+        setError(true)
+        return;
+    }
+
+    setError(false)
+
+// Objeto de pasiente 
+
+    const objetoPaciente = {
+        nombre,
+        propietario,
+        email,
+        fecha,
+        sintomas,
+        id: generarId ()
+    }
+
+    //console.log(objetoPaciente)
+
+
+    setPacientes([...pacientes, objetoPaciente]);
+
+//Reiniciar el formulario
+
+    setNombre('')
+    setPropietario('')
+    setEmail('')
+    setFecha('')
+    setSintomas('')
+
+}
+    
     return (
    <div className="md:w-1/2 lg:w-2/5 mx-5">
         <h2 className="text-stone-400 text-3xl text-centers">Seguimiento Pacientes</h2>
@@ -17,8 +66,13 @@ const Formulario = () => {
             <span className="font-bold text-orange-400">Administralos</span>
         </p>
 
-        <form className="bg-gray-400 shadow-lg rounded-lg py-10 px-5 mb-10">
-            
+        <form 
+            onSubmit={handleSubmit}
+            className="bg-gray-400 shadow-lg rounded-lg py-10 px-5 mb-10"
+        >
+            {error && <Error>
+                <p>Pailas, escriba todo</p>
+            </Error>}
             <div className="mb-5">
                 <label htmlFor="mascota" className="block uppercase font-bold">
                         Nombre de la mascota

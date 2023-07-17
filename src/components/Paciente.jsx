@@ -1,9 +1,9 @@
-const Paciente = () => {
+const Paciente = ({paciente}) => {
   return (
    
     <div className="mx-5 my-10 bg-gray-400 shadow-lg rounded-lg py-10 px-5 mb-10">
         <p className="font-bold mt-3 text-blue-600 uppercase"> Nombre: {''}
-                <span className="font-norma normal-case">Lukas</span>
+                <span className="font-norma normal-case">{paciente.nombre}</span>
         </p>
 
         <p className="font-bold mt-3 text-blue-600 uppercase"> Propietario: {''}
